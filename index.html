@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="通过 OpenAI 官方 Credits 赠送功能支持 qishuhua 的软件开发。">
+<title>支持我的开发 · Codex Credits</title>
+<style>
+:root{color-scheme:light dark;--bg:#f4f5f7;--card:#fff;--ink:#17212c;--muted:#546170;--line:#dce1e6;--accent:#173d32;--accentText:#fff;--soft:#edf4f0}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}main{width:min(100% - 32px,560px);margin:48px auto 32px}header{margin-bottom:25px}.eyebrow{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}h1{font-size:clamp(27px,6.5vw,38px);line-height:1.2;letter-spacing:-.04em;margin:12px 0}h2{font-size:18px;margin:0 0 12px}p{margin:8px 0;color:var(--muted)}section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin:14px 0}a{color:inherit}button,.primary,.secondary{font:inherit;font-weight:650;min-height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:9px 14px;text-decoration:none;cursor:pointer;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}.primary{background:var(--accent);color:var(--accentText);border:1px solid var(--accent);width:100%;margin-top:14px}.secondary{flex:1}button:disabled{opacity:.45;cursor:not-allowed}.recipient{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.email{font-family:ui-monospace,monospace;overflow-wrap:anywhere;flex:1;min-width:160px;background:var(--bg);border-radius:9px;padding:11px 12px;font-size:14px}.hint{font-size:13px}.notice{background:var(--soft);padding:12px 14px;border-radius:10px;margin:12px 0;color:var(--ink);font-size:14px}ol{padding-left:23px;margin:0}li{padding:5px 0}li::marker{font-weight:700}.qr{display:block;width:172px;height:172px;max-width:100%;margin:12px auto;background:#fff;border-radius:8px}.actions{display:flex;gap:8px;flex-wrap:wrap}.center{text-align:center}.status{min-height:1.6em;font-size:13px;color:var(--muted);margin:5px 0}footer{font-size:12px;color:var(--muted);text-align:center;margin:22px 0}a:focus-visible,button:focus-visible{outline:3px solid #648fc2;outline-offset:3px}@media(prefers-color-scheme:dark){:root{--bg:#101517;--card:#191f22;--ink:#eef1f2;--muted:#b0bdc4;--line:#344044;--accent:#b6e2cb;--accentText:#132b20;--soft:#21352b}}@media(max-width:480px){main{margin-top:25px}section{padding:18px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="eyebrow">QISHUHUA · DEVELOPER SUPPORT</div><h1>请我充一点 Codex</h1><p>如果我的项目对你有帮助，欢迎通过官方 Credits 赠送功能支持我的持续开发。完全自愿，感谢你的支持。</p></header>
+<section aria-labelledby="gift-title">
+<h2 id="gift-title">赠送 Credits</h2>
+<p class="hint">礼物接收邮箱</p>
+<div class="recipient"><span class="email" id="recipient">尚未配置</span><button type="button" id="copy-email" disabled>复制邮箱</button></div>
+<div class="notice" id="unconfigured">站点管理员尚未设置接收邮箱。请先通过可信的私下渠道向作者确认接收方式，再购买礼物。</div>
+<a class="primary" href="https://chatgpt.com/codex/settings/usage" target="_blank" rel="noopener noreferrer">打开 ChatGPT 官方用量页面 ↗</a>
+<p class="hint">上方是用量管理入口，而非独立结账链接。如果没有 Gift credits 选项，请查看<a href="https://help.openai.com/en/articles/20001417-gifting-credits-in-chatgpt" target="_blank" rel="noopener noreferrer">官方赠送指南</a>；赠送功能正在逐步开放。</p>
+<div class="status" id="gift-status" role="status" aria-live="polite"></div>
+</section>
+<section>
+<h2>如何赠送</h2>
+<ol><li>使用符合条件的 ChatGPT 个人账号登录官方网站。</li><li>打开官方 Credits 赠送流程，选择金额并完成支付。</li><li>结账后选择发送邮件，将兑换链接发送给作者；或者通过可信私聊转发链接。</li><li>作者登录自己的符合条件的 ChatGPT 账号，领取 Credits。</li></ol>
+<p class="notice">兑换链接相当于一次性凭证。请勿发布到公开评论区、GitHub Issues 或群聊。邮件地址本身不会锁定兑换人的身份。</p>
+<p class="hint">赠送的是额外可用 Credits，不会重置订阅自带的限额。购买人与接收人须使用相同账单币种，且需在购买后 30 天内兑换。具体金额和资格以官方页面为准。</p>
+</section>
+<section class="center">
+<h2>分享此页面</h2><p class="hint">二维码指向作者的个人支持页面，不是支付码或兑换码。</p>
+<img class="qr" src="qrcode.svg" alt="个人支持页面的二维码" width="172" height="172">
+<div class="actions"><button type="button" class="secondary" id="copy-link">复制页面链接</button><a class="secondary" href="qrcode.svg" download="codex-support-qrcode.svg">保存二维码</a></div>
+<div class="status" id="share-status" role="status" aria-live="polite"></div>
+</section>
+<footer>个人开发者支持页面，非 OpenAI 官方网站。本站不处理支付、不要求登录、不收集兑换链接。<br><a href="https://github.com/qishuhua" target="_blank" rel="noopener noreferrer">GitHub · qishuhua</a></footer>
+</main>
+<script>
+'use strict';
+// 此处仅填写你明确愿意公开的礼物接收邮箱；不要填写密码、Token 或兑换链接。
+const CONFIG = Object.freeze({ recipientEmail: '', siteUrl: 'https://qishuhua.github.io/codex-donate/' });
+const $ = id => document.getElementById(id);
+const email = CONFIG.recipientEmail.trim();
+if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  $('recipient').textContent = email;
+  $('copy-email').disabled = false;
+  $('unconfigured').hidden = true;
+}
+async function copyText(value, status) {
+  try {
+    if (!navigator.clipboard || !window.isSecureContext) throw new Error('Clipboard unavailable');
+    await navigator.clipboard.writeText(value);
+    $(status).textContent = '已复制';
+  } catch (_) {
+    const field = document.createElement('textarea');
+    field.value = value; field.setAttribute('readonly','');
+    Object.assign(field.style,{position:'fixed',top:'0',left:'0',opacity:'0'});
+    document.body.appendChild(field); field.select();
+    let copied = false; try { copied = document.execCommand('copy'); } catch (_) {} field.remove();
+    $(status).textContent = copied ? '已复制' : '复制未成功，请手动复制：' + value;
+  }
+}
+$('copy-email').addEventListener('click',()=>copyText(email,'gift-status'));
+$('copy-link').addEventListener('click',()=>copyText(CONFIG.siteUrl,'share-status'));
+</script>
+</body>
+</html>
