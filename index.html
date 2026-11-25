@@ -31,8 +31,8 @@
 </section>
 <section class="center">
 <h2>分享此页面</h2><p class="hint">二维码指向作者的个人支持页面，不是支付码或兑换码。</p>
-<img class="qr" src="qrcode.svg" alt="个人支持页面的二维码" width="172" height="172">
-<div class="actions"><button type="button" class="secondary" id="copy-link">复制页面链接</button><a class="secondary" href="qrcode.svg" download="codex-support-qrcode.svg">保存二维码</a></div>
+<img class="qr" id="share-qr" src="qrcode.svg" alt="个人支持页面的二维码" width="172" height="172">
+<div class="actions"><button type="button" class="secondary" id="copy-link">复制页面链接</button><button type="button" class="secondary" id="download-qr-png">保存二维码（PNG）</button></div>
 <div class="status" id="share-status" role="status" aria-live="polite"></div>
 </section>
 <footer>个人开发者支持页面，非 OpenAI 官方网站。本站不处理支付、不要求登录、不收集兑换链接。<br><a href="https://github.com/qishuhua" target="_blank" rel="noopener noreferrer">GitHub · qishuhua</a></footer>
@@ -64,6 +64,34 @@ async function copyText(value, status) {
 }
 $('copy-email').addEventListener('click',()=>copyText(email,'gift-status'));
 $('copy-link').addEventListener('click',()=>copyText(CONFIG.siteUrl,'share-status'));
+$('download-qr-png').addEventListener('click', () => {
+  const status = $('share-status');
+  try {
+    const img = $('share-qr');
+    if (!img.complete || !img.naturalWidth) {
+      status.textContent = '二维码尚未加载成功，请刷新页面后重试。';
+      return;
+    }
+    // 37 modules including the quiet zone, 16 pixels per module.
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 37 * 16;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Canvas unavailable');
+    ctx.imageSmoothingEnabled = false;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'codex-support-qrcode.png';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    status.textContent = '已请求下载 PNG 二维码。';
+  } catch (_) {
+    status.textContent = 'PNG 导出失败，请刷新页面后重试。';
+  }
+});
 </script>
 </body>
 </html>
